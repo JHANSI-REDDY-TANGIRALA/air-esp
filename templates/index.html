@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random IP Rotator</title>
+</head>
+
+<body>
+    <h1>Random IP Rotator</h1>
+    <button type="submit" onclick="rotate()">Rotate IP</button>
+
+    <script>
+        function rotate(){
+            fetch('/rotate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('response').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+
+</html>
